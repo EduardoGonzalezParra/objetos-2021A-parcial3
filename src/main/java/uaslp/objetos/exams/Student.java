@@ -7,7 +7,7 @@ public class Student {
 
     private int Code;
     private String Name;
-    private LinkedList<Score> Score;
+    private int Score;
     private double Average;
 
     public Student(String Name, int Code) {
@@ -31,15 +31,15 @@ public class Student {
         Name = name;
     }
 
-
+    public void setScore(int index, int score) {
+        Score = score;
+    }
 
     public double getAverage() {
         int suma;
 
-        for(int i=0; i< Score.size(); i++) {
+        return Average;
 
-            
-        }
     }
 
     public void setAverage(double average) {
