@@ -1,48 +1,48 @@
 package uaslp.objetos.exams;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Student {
+    private String name;
+    private int code;
+    private Integer score[];
 
-    private int Code;
-    private String Name;
-    private int Score;
-    private double Average;
-
-    public Student(String Name, int Code) {
-        this.Name = Name;
-        this.Code = Code;
-    }
-
-    public int getCode() {
-        return Code;
-    }
-
-    public void setCode(int code) {
-        Code = code;
+    public Student(String name, int code){
+        this.code=code;
+        this.name=name;
+        score =new Integer[3];
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public int getCode() {
+        return code;
     }
 
     public void setScore(int index, int score) {
-        Score = score;
+        if(index>3 || index <1)
+        {
+            try {
+                throw new InvalidPartialException();
+            } catch (InvalidPartialException e) {
+                e.printStackTrace();
+            }
+        }
+        this.score[index-1] = score;
     }
 
     public double getAverage() {
-        int suma;
-
-        return Average;
-
-    }
-
-    public void setAverage(double average) {
-        Average = average;
-    }
-}
+        double average = 0;
+        for (int i=0;i<3;i++){
+            if (score[i] == null) {
+                try {
+                    throw new MissingScoreException("Missing partial "+ (i+1));
+                } catch (MissingScoreException e) {
+                    e.printStackTrace();
+                }
+            }
+            average =average + score[i];
+        }
+        average = average/3;
+        return average;
+    }}

@@ -1,4 +1,7 @@
 package uaslp.objetos.exams;
 
-public class InvalidPartialException extends Exception {
+public class InvalidPartialException extends RuntimeException {
+    public InvalidPartialException()
+    {
+    }
 }
